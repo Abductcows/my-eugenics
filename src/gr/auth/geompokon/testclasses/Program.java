@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 
 public class Program {
 
-    static int MAX_ITERATIONS = 99;
-    static TypeToIndividualBijection<?> bijection;
+    static int MAX_ITERATIONS = 32000;
+    static TypeToIndividualBijection<Integer> bijection;
     static FitnessFunction fitnessFunction;
     static SelectionMechanism selectionMechanism;
     static CrossoverMechanism crossoverMechanism;
@@ -29,21 +29,32 @@ public class Program {
 
     protected static void run() {
         bijection = new IntegerToBitsBijection();
-        fitnessFunction = new DivisibilityFitness(new int[]{ 9, 4, 25 });
+        fitnessFunction = new DivisibilityFitness(new int[]{ 4 });
         selectionMechanism = new RouletteSelection();
         crossoverMechanism = new UniformCrossover();
         mutationMechanism = new BitStringMutator(0.08);
 
         Population population = getStartingPopulation();
 
+        ////////////////////
+
+        System.out.println("Before");
+        List<?> temp = population.getPopulation().stream().map(bijection::toType).collect(Collectors.toList());
+        for (Object i : temp) {
+            System.out.println(i + " : " + ((int) i%4 == 0));
+        }
+
+        ////////////////////
+
         for (int i=0; i<MAX_ITERATIONS; i++) {
             population = runIteration(population);
         }
 
+        System.out.println("After");
         List<?> result = population.getPopulation().stream().map(bijection::toType).collect(Collectors.toList());
 
         for (Object i : result) {
-            System.out.println(i);
+            System.out.println(i + " : " + ((int) i%4 == 0));
         }
     }
 
@@ -63,6 +74,7 @@ public class Program {
             Individual i1 = individuals[2*i];
             Individual i2 = individuals[2*i + 1];
 
+            // add children after mutation
             Individual[] children = crossoverMechanism.crossOver(i1, i2);
             for (Individual child : children) {
                 mutationMechanism.mutate(child);
@@ -70,6 +82,7 @@ public class Program {
             resultPopulation.addAll(children);
         }
 
+        // add single individual if any
         if (individuals.length % 2 == 1) {
             resultPopulation.add(individuals[individuals.length-1]);
         }
@@ -78,18 +91,23 @@ public class Program {
     }
 
     protected static Population getStartingPopulation() {
-        // 20 to 40 random integers
+        // 20 random integers
         Random random = new Random();
-        int populationSize = 20 + random.nextInt(21);
+        int populationSize = 20;
 
         Population result = new Population(new HashSet<>());
 
         for (int i=0; i<populationSize; i++) {
-            result.add(
-                    new Individual(
-                            Integer.toString(
-                                    random.nextInt(), 2)));
+
+            int numberToAdd = random.nextInt(10) * 2 + 1;
+
+            result.add(bijection.toIndividual(numberToAdd));
         }
+
+        result.add(bijection.toIndividual(4));
+        result.add(bijection.toIndividual(4));
+        result.add(bijection.toIndividual(4));
+        result.add(bijection.toIndividual(4));
 
         return result;
     }

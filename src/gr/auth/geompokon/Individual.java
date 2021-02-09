@@ -1,26 +1,24 @@
 package gr.auth.geompokon;
 
-import java.util.BitSet;
-
 public class Individual {
 
-    protected BitSet genes;
+    byte[] genes;
 
-    public Individual(BitSet genes) {
+    public Individual(byte[] genes) {
         this.genes = genes;
     }
 
     public Individual(String binaryGenes) {
-        genes = new BitSet(binaryGenes.length());
+        genes = new byte[binaryGenes.length()];
 
         for (int i=0; i<binaryGenes.length(); i++) {
             if (binaryGenes.charAt(i) == '1') {
-                genes.set(i);
+                genes[i] = 1;
             }
         }
     }
 
-    public BitSet getGenes() {
+    public byte[] getGenes() {
         return genes;
     }
 
@@ -29,11 +27,10 @@ public class Individual {
     }
 
     protected String calculateBinaryGenes() {
-        StringBuilder result = new StringBuilder(genes.size());
+        StringBuilder result = new StringBuilder(genes.length);
 
-        for (int i=0; i<genes.size(); i++) {
-            System.out.println(genes.size());
-            result.append( genes.get(i) ? 1 : 0);
+        for (byte gene : genes) {
+            result.append(gene == 1 ? 1 : 0);
         }
 
         return result.toString();

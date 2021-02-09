@@ -3,7 +3,6 @@ package gr.auth.geompokon.sampleimplementations;
 import gr.auth.geompokon.Individual;
 import gr.auth.geompokon.interfaces.MutationMechanism;
 
-import java.util.BitSet;
 import java.util.Random;
 
 public class BitStringMutator implements MutationMechanism {
@@ -19,12 +18,12 @@ public class BitStringMutator implements MutationMechanism {
     public Individual mutate(Individual individual) {
 
         if (random.nextDouble() < p) {
-            BitSet genes = individual.getGenes();
-            double pFlip = 1d / genes.size();
+            byte[] genes = individual.getGenes();
+            double pFlip = 1d / genes.length;
 
-            for (int i=0; i<genes.size(); i++) {
+            for (int i=0; i<genes.length; i++) {
                 if (random.nextDouble() < pFlip) {
-                    genes.flip(i);
+                    genes[i] = (byte) (genes[i] == 1 ? 0 : 1);
                 }
             }
         }
