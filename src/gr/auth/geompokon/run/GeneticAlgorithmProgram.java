@@ -31,18 +31,12 @@ public abstract class GeneticAlgorithmProgram<T> {
 
     public List<T> run(Population startingPopulation) {
         instantiateMechanisms();
-        Population population = startingPopulation;
-
-        for (int i = 0; i< maxIter; i++) {
-            population = runIteration(population);
-        }
-
-        return population.getPopulation().stream().map(bijection::toType).collect(Collectors.toList());
+        return runAlgorithm(startingPopulation);
     }
 
     public List<T> run() {
-        Population startingPopulation = getStartingPopulation();
-        return run(startingPopulation);
+        instantiateMechanisms();
+        return run(getStartingPopulation());
     }
 
     public List<T> run(Collection<T> startingPopulation) {
@@ -52,6 +46,16 @@ public abstract class GeneticAlgorithmProgram<T> {
                 .collect(Collectors.toList());
 
         return run(new Population(individuals));
+    }
+
+    protected List<T> runAlgorithm(Population startingPopulation) {
+        Population population = startingPopulation;
+
+        for (int i = 0; i< maxIter; i++) {
+            population = runIteration(population);
+        }
+
+        return population.getPopulation().stream().map(bijection::toType).collect(Collectors.toList());
     }
 
     protected Population runIteration(Population population) {
