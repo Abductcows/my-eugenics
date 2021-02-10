@@ -29,14 +29,14 @@ public class FindMultiplesProgram extends GeneticAlgorithmProgram<Integer> {
     @Override
     protected void instantiateMechanisms() {
         this.bijection = new IntegerToBitsBijection();
-        this.crossoverMechanism = new UniformCrossover();
-        this.mutationMechanism = new BitStringMutation(0.1);
-        this.selectionMechanism = new RouletteSelection();
+        this.crossoverMechanism = new SinglePointCrossover(0.2);
+        this.mutationMechanism = new BitStringMutation(0);
+        this.selectionMechanism = new ElitismSelection(0.1);
         this.fitnessFunction = new DivisibilityFitness(factors);
     }
 
     private static List<Integer> getMyIntPopulation() {
-        int populationSize = 20;
+        int populationSize = 40;
         List<Integer> result = new ArrayList<>(populationSize);
         int factorsProduct = Arrays.stream(staticFactors).reduce(1, (product, i)->product*i);
         Random random = new Random();
