@@ -5,12 +5,12 @@ import gr.auth.geompokon.interfaces.MutationMechanism;
 
 import java.util.Random;
 
-public class BitStringMutator implements MutationMechanism {
+public class BitStringMutation implements MutationMechanism {
 
     private double p;
     private final Random random = new Random();
 
-    public BitStringMutator(double p) {
+    public BitStringMutation(double p) {
         this.p = p;
     }
 

@@ -16,10 +16,10 @@ public class DivisibilityFitness implements FitnessFunction {
     @Override
     public double getScore(Individual individual) {
 
-        int intValue = Integer.parseInt(individual.getBinaryGenesString(), 2);
+        int intValue = Integer.parseUnsignedInt(individual.getBinaryGenesString(), 2);
 
         return Arrays.stream(divisors)
-                .filter(divisor -> intValue % divisor == 0) // perfect divisors
+                .filter(divisor -> intValue % divisor == 0)
                 .count();
     }
 }

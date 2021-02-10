@@ -14,7 +14,7 @@ public class IntegerToBitsBijection implements TypeToIndividualBijection<Integer
 
     @Override
     public Integer toType(Individual individual) {
-        return Integer.parseInt(individual.getBinaryGenesString(), 2);
+        return Integer.parseUnsignedInt(individual.getBinaryGenesString(), 2);
     }
 
 
