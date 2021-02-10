@@ -2,7 +2,7 @@ package gr.auth.geompokon;
 
 public class Individual {
 
-    byte[] genes;
+    protected byte[] genes;
 
     public Individual(byte[] genes) {
         this.genes = genes;

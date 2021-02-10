@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class RouletteSelection implements SelectionMechanism {
 
-    Random random = new Random();
+    protected Random random = new Random();
 
     @Override
     public Population selectForCrossover(Population population, FitnessFunction fitnessFunction) {

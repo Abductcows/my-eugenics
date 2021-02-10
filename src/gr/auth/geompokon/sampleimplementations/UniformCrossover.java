@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class UniformCrossover implements CrossoverMechanism {
 
-    Random random = new Random();
+    protected Random random = new Random();
 
     @Override
     public Individual[] crossOver(Individual o1, Individual o2) {

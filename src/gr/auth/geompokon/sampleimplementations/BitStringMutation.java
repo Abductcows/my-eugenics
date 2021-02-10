@@ -15,7 +15,7 @@ public class BitStringMutation implements MutationMechanism {
     }
 
     @Override
-    public Individual mutate(Individual individual) {
+    public void mutate(Individual individual) {
 
         if (random.nextDouble() < p) {
             byte[] genes = individual.getGenes();
@@ -28,7 +28,6 @@ public class BitStringMutation implements MutationMechanism {
             }
         }
 
-        return individual;
     }
 
     public void setP(double newP) {

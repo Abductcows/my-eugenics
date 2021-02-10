@@ -4,5 +4,5 @@ import gr.auth.geompokon.Individual;
 
 public interface MutationMechanism {
 
-    Individual mutate(Individual obj);
+    void mutate(Individual obj);
 }

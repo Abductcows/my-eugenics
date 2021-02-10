@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 public class Population  {
 
-    HashSet<Individual> population;
+    protected HashSet<Individual> population;
 
     public Population(Collection<Individual> population) {
         this.population = new HashSet<>(population);
