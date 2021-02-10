@@ -1,6 +1,11 @@
-package gr.auth.geompokon.sampleimplementations;
+package gr.auth.geompokon.sampleimplementations.program;
 
 import gr.auth.geompokon.run.GeneticAlgorithmProgram;
+import gr.auth.geompokon.sampleimplementations.bijection.IntegerToBitsBijection;
+import gr.auth.geompokon.sampleimplementations.crossover.SinglePointCrossover;
+import gr.auth.geompokon.sampleimplementations.fitness.DivisibilityFitness;
+import gr.auth.geompokon.sampleimplementations.mutation.BitStringMutation;
+import gr.auth.geompokon.sampleimplementations.selection.ElitismSelection;
 
 import java.util.ArrayList;
 import java.util.Arrays;
