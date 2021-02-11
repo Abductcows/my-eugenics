@@ -1,11 +1,11 @@
-package gr.auth.geompokon.sampleimplementations.program;
+package gr.auth.geompokon.examples.program;
 
-import gr.auth.geompokon.run.GeneticAlgorithmProgram;
-import gr.auth.geompokon.sampleimplementations.bijection.IntegerToBitsBijection;
-import gr.auth.geompokon.sampleimplementations.crossover.SinglePointCrossover;
-import gr.auth.geompokon.sampleimplementations.fitness.DivisibilityFitness;
-import gr.auth.geompokon.sampleimplementations.mutation.BitStringMutation;
-import gr.auth.geompokon.sampleimplementations.selection.ElitismSelection;
+import gr.auth.geompokon.GeneticAlgorithmProgram;
+import gr.auth.geompokon.examples.bijection.IntegerToBitsBijection;
+import gr.auth.geompokon.examples.fitness.DivisibilityFitness;
+import gr.auth.geompokon.implementations.crossover.SinglePointCrossover;
+import gr.auth.geompokon.implementations.mutation.BitStringMutation;
+import gr.auth.geompokon.implementations.selection.ElitismSelection;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,12 +18,16 @@ public class FindMultiplesProgram extends GeneticAlgorithmProgram<Integer> {
     private final int[] factors;
 
     public static void main(String[] args) {
+        // instantiate starting population
         List<Integer> startingPopulation = getMyIntPopulation();
         printResults(startingPopulation);
 
+        // set max iterations and run genetic algorithm
         GeneticAlgorithmProgram<Integer> program = new FindMultiplesProgram(staticFactors);
         program.setMaxIter(9999);
         List<Integer> result = program.run(startingPopulation);
+
+        // print results
         printResults(result);
     }
 

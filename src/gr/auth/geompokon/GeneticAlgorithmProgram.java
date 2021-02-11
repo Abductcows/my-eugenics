@@ -1,7 +1,5 @@
-package gr.auth.geompokon.run;
+package gr.auth.geompokon;
 
-import gr.auth.geompokon.Individual;
-import gr.auth.geompokon.Population;
 import gr.auth.geompokon.generification.TypeToIndividualBijection;
 import gr.auth.geompokon.interfaces.CrossoverMechanism;
 import gr.auth.geompokon.interfaces.FitnessFunction;

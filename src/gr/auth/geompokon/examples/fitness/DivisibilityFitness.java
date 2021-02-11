@@ -1,4 +1,4 @@
-package gr.auth.geompokon.sampleimplementations.fitness;
+package gr.auth.geompokon.examples.fitness;
 
 import gr.auth.geompokon.Individual;
 import gr.auth.geompokon.interfaces.FitnessFunction;

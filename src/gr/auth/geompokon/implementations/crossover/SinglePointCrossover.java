@@ -1,4 +1,4 @@
-package gr.auth.geompokon.sampleimplementations.crossover;
+package gr.auth.geompokon.implementations.crossover;
 
 import gr.auth.geompokon.Individual;
 import gr.auth.geompokon.interfaces.CrossoverMechanism;

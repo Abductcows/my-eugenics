@@ -1,4 +1,4 @@
-package gr.auth.geompokon.sampleimplementations.bijection;
+package gr.auth.geompokon.examples.bijection;
 
 import gr.auth.geompokon.Individual;
 import gr.auth.geompokon.generification.TypeToIndividualBijection;

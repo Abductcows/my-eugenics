@@ -1,4 +1,4 @@
-package gr.auth.geompokon.sampleimplementations.selection;
+package gr.auth.geompokon.implementations.selection;
 
 import gr.auth.geompokon.Individual;
 import gr.auth.geompokon.Population;
