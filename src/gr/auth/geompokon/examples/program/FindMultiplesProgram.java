@@ -38,7 +38,7 @@ public class FindMultiplesProgram extends GeneticAlgorithmProgram<Integer> {
     @Override
     protected void instantiateMechanisms() {
         this.bijection = new IntegerToBitsBijection();
-        this.crossoverMechanism = new SinglePointCrossover(0.2);
+        this.crossoverMechanism = new SinglePointCrossover(32, 0.2);
         this.mutationMechanism = new BitStringMutation(0);
         this.selectionMechanism = new ElitismSelection(0.1);
         this.fitnessFunction = new DivisibilityFitness(factors);

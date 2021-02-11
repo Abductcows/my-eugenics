@@ -13,10 +13,6 @@ public class UniformCrossover implements CrossoverMechanism {
     public Individual[] crossOver(Individual o1, Individual o2) {
         byte[] gene1 = o1.getGenes(), gene2 = o2.getGenes();
 
-        if (gene1.length != gene2.length) {
-            throw new RuntimeException("Mismatching gene lengths: " + gene1.length + " - " + gene2.length);
-        }
-
         byte[] result1 = new byte[gene1.length];
         byte[] result2 = new byte[gene2.length];
 
